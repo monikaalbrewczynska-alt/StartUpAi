@@ -1,0 +1,16 @@
+{
+  "name": "recovera",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test",
+    "test:browser": "node scripts/browser-smoke.cjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "playwright": "^1.64.0"
+  }
+}
