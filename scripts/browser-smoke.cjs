@@ -3,7 +3,7 @@ const assert=require('node:assert/strict');
 (async()=>{
 const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH || '/usr/bin/chromium',headless:true,args:['--no-sandbox']});
 const page=await browser.newPage({viewport:{width:1440,height:1000}});const errors=[];page.on('pageerror',e=>errors.push(e.message));
-await page.goto('http://localhost:3000');
+await page.goto(process.env.APP_URL || 'http://localhost:3000');
 await page.locator('[data-task]').first().click();assert.equal(await page.locator('[data-task]').first().getAttribute('aria-pressed'),'true');
 await page.reload();assert.equal(await page.locator('[data-task]').first().getAttribute('aria-pressed'),'true');
 await page.locator('.nav[data-page="contact"]').click();await page.locator('[name="subject"]').fill('Ból po ćwiczeniach');await page.locator('[name="priority"]').selectOption('urgent');await page.locator('[name="message"]').fill('Proszę o kontakt z lekarzem.');await page.locator('#contact-form button').click();assert.equal(await page.locator('.report h3').first().textContent(),'Ból po ćwiczeniach');

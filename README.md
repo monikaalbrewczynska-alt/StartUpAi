@@ -16,6 +16,17 @@ npm start
 
 The server listens on port 3000; set `PORT` to override. Run `npm test` for HTTP smoke tests.
 
+## GitHub Pages
+
+The application is a static site; GitHub Pages does not run `server.js` or require a build. The deployment workflow publishes only the `public` directory. Relative stylesheet and script paths support the `/StartUpAi/` project URL.
+
+1. In the GitHub repository, open **Settings → Pages**.
+2. Under **Build and deployment → Source**, select **GitHub Actions**.
+3. Push to `main`, or run **Actions → Deploy Recovera to GitHub Pages → Run workflow**.
+4. After a successful deployment, use the URL shown in the `github-pages` environment. The expected project URL is `https://monikaalbrewczynska-alt.github.io/StartUpAi/`.
+
+For a custom test URL, run `APP_URL=http://localhost:8000/StartUpAi/ npm run test:browser`. Deployment publishes the demo UI only; it does not add backend services or deliver clinic notifications.
+
 For browser workflow validation, install development dependencies with `npm ci`, start the app, then run `npm run test:browser`. The browser smoke test uses `/usr/bin/chromium`; set `CHROMIUM_PATH` to override. It runs in an isolated browser context with fictional data and checks task persistence, contact / response, prescription requests, plan editing, photo uploads, physiotherapy, guardian access, English and mobile layout.
 
 ## Demo limitations
